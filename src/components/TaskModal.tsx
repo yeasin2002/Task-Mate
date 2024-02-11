@@ -34,7 +34,7 @@ export const TaskModal = ({
     defaultValues: {
       title: taskData?.title || "",
       desc: taskData?.desc || "",
-      priority: taskData?.priority || "low",
+      priority: taskData?.priority || "",
     },
   });
 

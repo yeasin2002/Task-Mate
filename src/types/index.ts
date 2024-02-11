@@ -5,12 +5,12 @@ export type Task = {
   title: string;
   desc: string;
   isComplete: boolean;
-  priority: Priority;
+  priority: Priority | "";
   createdAt?: Date;
 };
 
 export type TaskModalInputs = {
   title: string;
   desc: string;
-  priority: Priority;
+  priority: Priority | "";
 };
