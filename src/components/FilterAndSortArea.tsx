@@ -27,7 +27,8 @@ export const FilterAndSortArea = ({ ...rest }: Props) => {
               "text-gray-800 bg-gray-100 border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200 outline-none",
           })}
         >
-          Priority {filterBy !== "none" && `: ${filterBy}`}
+          <span className="hidden sm:inline mx-1"> Filter By </span> Priority
+          {filterBy !== "none" && `: ${filterBy}`}
         </DropdownMenuTrigger>
         <DropdownMenuContent>
           {priorityOptions.map((options) => {

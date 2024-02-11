@@ -5,7 +5,7 @@ import {
   AlertDialogTrigger,
   Button,
 } from "@/components/ui";
-import { Priority, Task } from "@/types";
+import { Priority, Task, TaskModalInputs } from "@/types";
 import { X } from "lucide-react";
 import React from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
@@ -14,14 +14,9 @@ interface Props extends React.ComponentPropsWithRef<"div"> {
   children: React.ReactNode;
   taskData?: Task | undefined;
   isEditMode?: boolean;
-  onSave?: (t: Task, mode: boolean) => void;
+  onSave?: (t: TaskModalInputs, mode: boolean) => void;
 }
 
-type Inputs = {
-  title: string;
-  desc: string;
-  priority: Priority;
-};
 const priorityOptions: Priority[] = ["low", "medium", "high"];
 
 export const TaskModal = ({
@@ -33,8 +28,9 @@ export const TaskModal = ({
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
-  } = useForm<Inputs>({
+  } = useForm<TaskModalInputs>({
     defaultValues: {
       title: taskData?.title || "",
       desc: taskData?.desc || "",
@@ -42,8 +38,9 @@ export const TaskModal = ({
     },
   });
 
-  const onSubmit: SubmitHandler<Inputs> = (data) => {
+  const onSubmit: SubmitHandler<TaskModalInputs> = (data) => {
     onSave(data!, isEditMode);
+    reset();
   };
 
   return (

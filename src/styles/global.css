@@ -75,6 +75,6 @@ body {
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground p-6;
+    @apply text-foreground p-6   bg-showDash dark:bg-[#00111c];
   }
 }

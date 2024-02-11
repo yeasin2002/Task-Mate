@@ -19,6 +19,10 @@ module.exports = {
     extend: {
       colors: {
         ashe: "#EF2F5",
+        show: "#fffafa",
+        intercom: "#f9fcff",
+        showDash: "linear-gradient(147deg, #f9fcff 0%, #dee4ea 74%)",
+
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
