@@ -1,13 +1,13 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  darkMode: ["class"],
+  darkMode: "class",
   content: [
     "./pages/**/*.{ts,tsx}",
     "./components/**/*.{ts,tsx}",
     "./app/**/*.{ts,tsx}",
     "./src/**/*.{ts,tsx}",
   ],
-  prefix: "",
+
   theme: {
     container: {
       center: true,
@@ -17,6 +17,16 @@ module.exports = {
       },
     },
     extend: {
+      fontFamily: {
+        bebasNeue: "Bebas Neue",
+        quicksand: "Quicksand",
+        PlayfairDisplay: "Playfair Display",
+        Oswald: "Oswald",
+        ProtestStrike: "Protest Strike",
+        PtSerif: "PT Serif",
+        ConcertOne: "Concert One",
+        UbuntuMono: "Ubuntu Mono",
+      },
       colors: {
         ashe: "#EF2F5",
         show: "#fffafa",

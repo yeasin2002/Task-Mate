@@ -2,10 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  scrollbar-gutter: stable;
-}
-
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -75,6 +71,6 @@ body {
     @apply border-border;
   }
   body {
-    @apply text-foreground p-6   bg-showDash dark:bg-[#00111c];
+    @apply transition-all text-foreground p-6   bg-showDash dark:bg-[#00111c] dark:text-show;
   }
 }

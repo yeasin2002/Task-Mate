@@ -48,7 +48,7 @@ export const TaskModal = ({
       <AlertDialogTrigger>{children}</AlertDialogTrigger>
       <AlertDialogContent className="py-3">
         <div className="flex items-center justify-between ">
-          <p className="text-xl font-medium ">
+          <p className="text-xl font-medium  font-ConcertOne">
             {isEditMode ? "Edit Task" : "Add Task"}
           </p>
           <AlertDialogCancel className="p-0">
@@ -82,7 +82,7 @@ export const TaskModal = ({
           </p>
 
           <div className="flex items-center gap-x-3">
-            <p className="text-lg font-semibold">Priority : </p>
+            <p className="text-lg font-semibold font-Oswald">Priority : </p>
             {priorityOptions.map((options) => {
               return (
                 <label
@@ -100,7 +100,7 @@ export const TaskModal = ({
                       required: "Priority is required",
                     })}
                   />
-                  <span className="capitalize">{options}</span>
+                  <span className="capitalize font-PtSerif">{options}</span>
                 </label>
               );
             })}
@@ -108,7 +108,7 @@ export const TaskModal = ({
           <p className="text-red-500 text-sm font-semibold  animate-pulse">
             {errors.priority && errors?.priority?.message}
           </p>
-          <Button type="submit" className="w-full">
+          <Button type="submit" className="w-full font-Oswald ">
             Submit
           </Button>
         </form>

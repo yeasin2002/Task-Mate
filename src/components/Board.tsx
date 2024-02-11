@@ -23,10 +23,12 @@ export const Board = ({ ...rest }: Props) => {
       />
 
       <p>
-        <span className="text-gray-700  font-semibold  text-lg  font-serif">
+        <span className="text-gray-700    text-lg  font-bebasNeue">
           Total Task:
         </span>
-        <span className="text-blue-500 mx-1">{filteredTask.length}</span>
+        <span className="text-blue-500 mx-1 font-Oswald">
+          {filteredTask.length}
+        </span>
       </p>
       {filteredTask.length === 0 && <NoTaskFound />}
       <div className="grid grid-cols-1 md:grid-cols-2  lg:grid-cols-3 2xl:grid-cols-4 gap-4 bg-ashe  w-full ">

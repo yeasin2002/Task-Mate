@@ -31,7 +31,7 @@ export const TaskItem = ({ task, ...rest }: Props) => {
   return (
     <div {...rest} className="p-4 shadow-2xl rounded-lg animate-fadeIn ">
       <div className="flex  items-center justify-between my-5">
-        <p>
+        <p className="font-ConcertOne capitalize ">
           <span
             className={cn("size-3  inline-block rounded-full  mx-1 ", {
               "bg-green-400": task.priority === "low",
@@ -52,12 +52,12 @@ export const TaskItem = ({ task, ...rest }: Props) => {
           className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
         />
       </div>
-      <p>{task.desc}</p>
+      <p className="font-PtSerif">{task.desc}</p>
       <hr className="mt-5" />
       <div className="flex justify-between items-center ">
         <div className="flex items-center gap-x-1">
           <img src={calenderIcon} alt="calender" className="size-7" />
-          <p>{taskDate}</p>
+          <p className="font-UbuntuMono text-base">{taskDate}</p>
         </div>
         <div className="flex items-center gap-x-3 *:flex *:items-center my-2">
           <TaskModal

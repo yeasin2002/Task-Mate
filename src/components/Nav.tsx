@@ -27,13 +27,16 @@ export const Nav = ({ ...rest }: Props) => {
     <div {...rest} className="flex items-center justify-between">
       <div className="flex items-center gap-x-2">
         <Logo className="size-8 " />
-        <p className="text-lg font-semibold   font-serif text-gray-800">
+        <p className="text-lg font-semibold   font-Oswald  dark:text-gray-100 ">
           Task Mate
         </p>
       </div>
-      <TaskModal isEditMode={false} onSave={handleTaskAdd}>
-        <Button>Add Task</Button>
-      </TaskModal>
+      <div className="flex items-center gap-4">
+        {/* <ThemeSwitcher className="size-8" /> */}
+        <TaskModal isEditMode={false} onSave={handleTaskAdd}>
+          <Button className="font-ConcertOne">Add Task</Button>
+        </TaskModal>
+      </div>
     </div>
   );
 };
