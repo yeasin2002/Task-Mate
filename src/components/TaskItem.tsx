@@ -4,7 +4,7 @@ import { EditIcon, Trash } from "lucide-react";
 import React from "react";
 import { TaskModal } from "./TaskModal";
 
-interface Props extends React.ComponentProps<"div"> {}
+interface Props extends React.ComponentPropsWithRefD<"div"> {}
 
 export const TaskItem = ({ ...rest }: Props) => {
   return (

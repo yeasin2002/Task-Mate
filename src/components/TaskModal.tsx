@@ -5,17 +5,24 @@ import {
   AlertDialogTrigger,
   Button,
 } from "@/components/ui";
-import { Task } from "@/types";
+import { Priority, Task } from "@/types";
 import { X } from "lucide-react";
 import React from "react";
-import { TaskRadios } from "./TaskRadios";
+import { SubmitHandler, useForm } from "react-hook-form";
 
 interface Props extends React.ComponentPropsWithRef<"div"> {
   children: React.ReactNode;
   taskData?: Task | undefined;
   isEditMode?: boolean;
-  onSave?: (t: Task, e: boolean) => void;
+  onSave?: (t: Task, mode: boolean) => void;
 }
+
+type Inputs = {
+  title: string;
+  desc: string;
+  priority: Priority;
+};
+const priorityOptions: Priority[] = ["low", "medium", "high"];
 
 export const TaskModal = ({
   children,
@@ -23,39 +30,87 @@ export const TaskModal = ({
   isEditMode = false,
   onSave = () => {},
 }: Props) => {
-  const formHandler = (e: React.MouseEvent<HTMLFormElement, MouseEvent>) => {
-    e.preventDefault();
-    onSave(taskData!, isEditMode);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<Inputs>({
+    defaultValues: {
+      title: taskData?.title || "",
+      desc: taskData?.desc || "",
+      priority: taskData?.priority || "low",
+    },
+  });
+
+  const onSubmit: SubmitHandler<Inputs> = (data) => {
+    onSave(data!, isEditMode);
   };
+
   return (
     <AlertDialog>
       <AlertDialogTrigger>{children}</AlertDialogTrigger>
       <AlertDialogContent className="py-3">
         <div className="flex items-center justify-between ">
-          <p>Task Actions</p>
+          <p className="text-xl font-medium ">
+            {isEditMode ? "Edit Task" : "Add Task"}
+          </p>
           <AlertDialogCancel className="p-0">
             <X className="p-2 size-10" />
           </AlertDialogCancel>
         </div>
-        <form onClick={formHandler} className="space-y-4">
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           <input
             type="text"
             placeholder="Write Task Title"
             className="p-2 w-full  outline-none border border-gray-300 rounded-md"
+            {...register("title", {
+              required: "Title is required",
+            })}
           />
-          <br />
+          <p className="text-red-500 text-sm font-semibold  animate-pulse">
+            {errors.title && errors?.title?.message}
+          </p>
+
           <textarea
-            name="desc"
             id="dec"
             placeholder="Write Task Descriptions"
             className="p-2 w-full min-h-28 outline-none border border-gray-300 rounded-md"
+            {...register("desc", {
+              required: "desc is required",
+            })}
           />
+
+          <p className="text-red-500 text-sm font-semibold  animate-pulse">
+            {errors.desc && errors?.desc?.message}
+          </p>
+
           <div className="flex items-center gap-x-3">
-            <p>Priority : </p>
-            <TaskRadios title={"all"} />
-            <TaskRadios title={"complete"} />
-            <TaskRadios title={"incomplete"} />
+            <p className="text-lg font-semibold">Priority : </p>
+            {priorityOptions.map((options) => {
+              return (
+                <label
+                  htmlFor={options}
+                  className={
+                    "flex items-center gap-x-[0.20rem] *:cursor-pointer"
+                  }
+                  key={options}
+                >
+                  <input
+                    id={options}
+                    type="radio"
+                    defaultValue={options}
+                    {...register("priority", {
+                      required: "Priority is required",
+                    })}
+                  />
+                  <span className="capitalize">{options}</span>
+                </label>
+              );
+            })}
           </div>
+          <p className="text-red-500 text-sm font-semibold  animate-pulse">
+            {errors.priority && errors?.priority?.message}
+          </p>
           <Button type="submit" className="w-full">
             Submit
           </Button>

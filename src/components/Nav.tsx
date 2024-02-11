@@ -6,6 +6,10 @@ import { Button } from "./ui";
 interface Props extends React.ComponentProps<"div"> {}
 
 export const Nav = ({ ...rest }: Props) => {
+  const handleTaskAdd = (data, mode) => {
+    console.log(data);
+    console.log(mode);
+  };
   return (
     <div {...rest} className="flex items-center justify-between">
       <div className="flex items-center gap-x-2">
@@ -14,7 +18,7 @@ export const Nav = ({ ...rest }: Props) => {
           Task Mate
         </p>
       </div>
-      <TaskModal>
+      <TaskModal isEditMode={false} onSave={handleTaskAdd}>
         <Button>Add Task</Button>
       </TaskModal>
     </div>
