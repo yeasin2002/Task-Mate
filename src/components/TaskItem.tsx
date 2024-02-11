@@ -29,7 +29,7 @@ export const TaskItem = ({ task, ...rest }: Props) => {
   };
 
   return (
-    <div {...rest} className="p-4 shadow-2xl rounded-lg ">
+    <div {...rest} className="p-4 shadow-2xl rounded-lg animate-fadeIn ">
       <div className="flex  items-center justify-between my-5">
         <p>
           <span

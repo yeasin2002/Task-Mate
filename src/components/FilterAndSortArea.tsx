@@ -1,23 +1,37 @@
-import React, { useState } from "react";
-interface Props extends React.ComponentProps<"div"> {}
-
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+
 import { Priority } from "@/types";
 import { Search } from "./Search";
 import { buttonVariants } from "./ui";
 
 const priorityOptions = ["none", "low", "medium", "high"];
 
-export const FilterAndSortArea = ({ ...rest }: Props) => {
-  const [filterBy, setFilterBy] = useState<Priority | "none">("none");
+interface Props extends React.ComponentProps<"div"> {
+  filterBy: Priority | "none";
+  setFilterBy: (value: Priority | "none") => void;
+
+  searchValue: string;
+  setSearchValue: (value: string) => void;
+}
+
+export const FilterAndSortArea = ({
+  filterBy,
+  setFilterBy,
+  searchValue,
+  setSearchValue,
+  ...rest
+}: Props) => {
   return (
     <div className="flex items-center justify-between" {...rest}>
-      <Search />
+      <Search
+        value={searchValue}
+        onChange={(e) => setSearchValue(e.target.value)}
+      />
 
       <DropdownMenu modal={false}>
         <DropdownMenuTrigger
@@ -43,6 +57,7 @@ export const FilterAndSortArea = ({ ...rest }: Props) => {
                   name={options}
                   checked={filterBy === options}
                 />
+
                 <p>{options}</p>
               </DropdownMenuItem>
             );
