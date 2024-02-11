@@ -1,8 +1,10 @@
-### Task-Mate
+## Task-Mate
 
 <a href="https://taskmate2024.netlify.app/">
 <img src="https://img.shields.io/badge/Live-blue" alt="Live" />
 </a>
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/fd860304-7672-42b4-92c2-07af1be31da7/deploy-status)](https://app.netlify.com/sites/taskmate2024/deploys)
 
 ### Technologies
 

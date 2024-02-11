@@ -10,9 +10,4 @@ export default defineConfig({
       "@/ui": path.resolve(__dirname, "./src/components/ui"),
     },
   },
-  build: {
-    rollupOptions: {
-      external: ["@radix-ui/react-checkbox"],
-    },
-  },
 });

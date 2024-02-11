@@ -3,7 +3,7 @@ import React from "react";
 import { toast } from "react-hot-toast";
 
 import calenderIcon from "@/assets/calender.svg";
-import { Checkbox } from "@/components/ui";
+
 import { cn } from "@/lib";
 import { useTaskStore } from "@/store";
 import { Task, TaskModalInputs } from "@/types";
@@ -41,7 +41,8 @@ export const TaskItem = ({ task, ...rest }: Props) => {
           />
           {task.title}
         </p>
-        <Checkbox
+        <input
+          type="checkbox"
           defaultChecked={task.isComplete}
           onClick={() => {
             markAsCompleteOrIncomplete(task.id);
@@ -49,7 +50,7 @@ export const TaskItem = ({ task, ...rest }: Props) => {
             toast.success(`Task marked as ${completed}`);
           }}
           id="blue-checkbox"
-          className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+          className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded    dark:bg-gray-700 dark:border-gray-600 outline-none cursor-pointer"
         />
       </div>
       <p className="font-PtSerif">{task.desc}</p>
