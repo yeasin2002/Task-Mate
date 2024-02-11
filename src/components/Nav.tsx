@@ -1,5 +1,6 @@
 import React from "react";
 import { Logo } from "./Logo";
+import { TaskModal } from "./TaskModal";
 import { Button } from "./ui";
 
 interface Props extends React.ComponentProps<"div"> {}
@@ -13,9 +14,9 @@ export const Nav = ({ ...rest }: Props) => {
           Task Mate
         </p>
       </div>
-      <div>
-        <Button variant={"default"}>Add Task</Button>
-      </div>
+      <TaskModal>
+        <Button>Add Task</Button>
+      </TaskModal>
     </div>
   );
 };

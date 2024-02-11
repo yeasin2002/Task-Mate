@@ -3,18 +3,17 @@ interface Props extends React.ComponentProps<"input"> {}
 
 export const Search = ({ ...rest }: Props) => {
   return (
-    <label
-      htmlFor="search"
-      className="flex  items-center   gap-x-2     border-b  pb-2  "
-    >
-      <SearchIcon />
+    <div className="relative">
+      <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+        <SearchIcon className="w-4 h-4 text-gray-500 dark:text-gray-400" />
+      </div>
       <input
         {...rest}
-        id="search"
         type="search"
-        placeholder="Search"
-        className="border-none outline-none placeholder:font-semibold placeholder:text-base placeholder:text-gray-500 "
+        id="default-search"
+        className="block w-full px-4 py-2 ps-10 text-sm text-gray-900 border-b border-gray-300 rounded-lg bg-white focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white outline-none  "
+        placeholder="Search task..."
       />
-    </label>
+    </div>
   );
 };
